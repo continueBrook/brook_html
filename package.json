@@ -1,7 +1,7 @@
 {
   "name": "brook_html",
   "version": "0.0.1",
-  "description": "关于网页的一些小功能\r hello world",
+  "description": "关于网页的一些小功能 hello world",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
