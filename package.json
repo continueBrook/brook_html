@@ -1,6 +1,6 @@
 {
   "name": "brook_html",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "关于网页的一些小功能 hello world",
   "main": "src/index.js",
   "scripts": {
