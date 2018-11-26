@@ -1,11 +1,11 @@
 const http = require("http");
-const url = require("url");
-const fs = require("fs");
-const zlib = require("zlib");
-const querystring = require("querystring");
+const url = require("url");   //get方法获得数据
+const fs = require("fs");  
+const zlib = require("zlib");   //压缩用
+const querystring = require("querystring");  //post方法获得数据
 const mysql = require("mysql");
-const crypto = require("crypto");
-const key = "zheshiyiduanmeiyourenzhidaodekey";
+const crypto = require("crypto");  //对于加密(md5)
+const key = "zheshiyiduanmeiyourenzhidaodekey";  
 
 let db = mysql.createPool({
     host: "localhost",
@@ -36,7 +36,7 @@ let server = http.createServer((req, res) => {
     }
     switch (pathname) {
         case '/reg':
-            if (checkQuery()) {
+            if (checkQuery()) {  //get方法
                 if (!user) {
                     res.write('{"error":1,"msg":"user is null"}');
                     res.end();
@@ -70,7 +70,7 @@ let server = http.createServer((req, res) => {
                         }
                     })
                 }
-            } else {
+            } else { //post方法
                 let arr = [];
                 req.on("data", data => {
                     arr.push(data);
@@ -117,7 +117,7 @@ let server = http.createServer((req, res) => {
             }
             break;
         case '/login':
-            if (checkQuery()) {
+            if (checkQuery()) {  //get方法
                 if (!user) {
                     res.write('{"error":1,"msg":"user is null"}');
                     res.end();
@@ -147,7 +147,7 @@ let server = http.createServer((req, res) => {
                         }
                     })
                 }
-            } else {
+            } else {  //post方法
                 let arr = [];
                 req.on("data", data => {
                     arr.push(data);
@@ -190,7 +190,7 @@ let server = http.createServer((req, res) => {
             }
             break;
         default:
-            fs.stat(`.${req.url}`, (err, data) => {
+            fs.stat(`.${req.url}`, (err, data) => { //data获得server端改变的时间
                 function sendToClient() {
                     let rs = fs.createReadStream(`.${req.url}`);
                     let gz = zlib.createGzip(`.${req.url}`);
