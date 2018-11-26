@@ -1,3 +1,1 @@
-# brook_html
-关于网页的一些小功能
-hello world
+这是一个很神奇的东西
